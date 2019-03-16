@@ -1,0 +1,15 @@
+— добавление данных и строк в таблицы 
+.headers on 
+.mode column 
+
+— создадим таблицу 
+CREATE TABLE Client( 
+ID_Client INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, 
+FIO_Clienta NVARCHAR(50) NOT NULL, 
+ID_Kind_Of_Activity INTEGER NOT NULL);
+ 
+— добавление строк 
+INSERT INTO Client (ID_Client, FIO_Clienta, ID_Kind_Of_Activity) 
+VALUES (1, 'Иванов Иван Иванович', 1); 
+INSERT INTO Client (ID_Client, FIO_Clienta, ID_Kind_Of_Activity) 
+VALUES (2, 'Иванова Екатерина Анатольевна', 2);

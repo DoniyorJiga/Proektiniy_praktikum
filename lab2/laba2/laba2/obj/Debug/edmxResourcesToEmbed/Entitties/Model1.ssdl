@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище Laba2Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ID_client" />
+    </Key>
+    <Property Name="ID_client" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FIO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Age" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Request">
+    <Key>
+      <PropertyRef Name="ID_request" />
+    </Key>
+    <Property Name="ID_request" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_client" Type="int" Nullable="false" />
+    <Property Name="ID_service" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="ID_service" />
+    </Key>
+    <Property Name="ID_service" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Request_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ID_client" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="ID_client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Request_Service">
+    <End Role="Service" Type="Self.Service" Multiplicity="1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="ID_service" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="ID_service" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище Laba2ModelContainer">
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Request_Client" Association="Self.FK_Request_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Request_Service" Association="Self.FK_Request_Service">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
