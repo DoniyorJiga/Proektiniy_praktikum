@@ -1,0 +1,7 @@
+[
+  {
+    "url": "http://127.0.0.1:8000/api/spaces",
+    "response": {"data":"molodez,_vozmi_s_polki_piroshok"},
+    "method": "GET"
+  }
+]

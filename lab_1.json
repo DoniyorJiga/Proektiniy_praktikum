@@ -1,0 +1,27 @@
+[
+  {
+    "url": "http://127.0.0.1:8000/api/maths/25",
+    "response": {data: "Не квадратное уравнение"},
+    "method": "GET"
+  },
+  {
+    "url": "http://127.0.0.1:8000/api/days/?date=29.03.2019",
+    "response": {"data":"Пятница"},
+    "method": "GET"
+  },
+  {
+    "url": "http://127.0.0.1:8000/api/regions/72",
+    "response": {data: "Тюменская область"},
+    "method": "GET"
+  },
+  {
+    "url": "http://127.0.0.1:8000/api/equations?a=1&b=8&c=12",
+    "response": {"data":{"x1":-2,"x2":-6}},
+    "method": "GET"
+  },
+  {
+    "url": "http://127.0.0.1:8000/api/numbers/1666",
+    "response": {data: "одна тысяча шестьсот шестьдесят шесть"},
+    "method": "GET"
+  }
+]
